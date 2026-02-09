@@ -238,36 +238,22 @@
   }
 }
 
-.project__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-  display: block; /* Add this */
-  background: #fff; /* Add this */
+/* Fix for low contrast */
+.project__card {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12) !important;
 }
 
-/* Ensure overlay doesn't interfere with normal view */
-.project__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.7) 100%
-  );
-  display: flex;
-  align-items: flex-end;
-  padding: 1.5rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none; /* Add this - prevents overlay from blocking image */
+.project__title {
+  color: #1a1a1a !important;
+  opacity: 1 !important;
 }
 
-.project__card:hover .project__overlay {
-  opacity: 1;
-  pointer-events: auto; /* Re-enable on hover */
+.project__description {
+  color: #444 !important;
+  opacity: 1 !important;
+}
+
+.project__link {
+  color: #007bff !important;
+  opacity: 1 !important;
 }
