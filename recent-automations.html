@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  </head>
+  <body>
+    <section class="automation-project">
+      <h2>Recent Automations</h2>
+
+      <!-- Platform Tabs -->
+      <div class="tabs">
+        <button class="tab" data-tab="zapier">Zapier</button>
+        <button class="tab active" data-tab="make">Make</button>
+        <button class="tab" data-tab="n8n">n8n</button>
+      </div>
+
+      <!-- Zapier Projects -->
+      <div class="tab-content" id="zapier">
+        <div class="project-card">
+          <h3>Automated Lead Enrichment & Prioritization</h3>
+          <p>
+            <strong>Problem:</strong> Sales teams spent too much time manually
+            researching leads and categorizing them, which slowed down response
+            times and impacted follow-ups.
+          </p>
+          <p>
+            <strong>Solution:</strong> Built a Zapier-powered automation that:
+          </p>
+          <ul>
+            <li>Captures lead entries via webhook.</li>
+            <li>
+              Extracts website domain from the lead and enriches data using
+              Abstract API.
+            </li>
+            <li>
+              Routes leads onto separate paths based on enrichment results:
+            </li>
+            <ul>
+              <li>
+                <strong>Startup:</strong> Companies &lt; 25 employees and &lt; 5
+                years old.
+              </li>
+              <li>
+                <strong>Established Business:</strong> Companies &gt; 100
+                employees and &gt; 5 years old.
+              </li>
+              <li>
+                <strong>Fallback:</strong> Any lead that doesn’t match the above
+                criteria.
+              </li>
+            </ul>
+            <li>For each path:</li>
+            <ul>
+              <li>
+                Startup → Insert into Supabase with
+                <code>low priority</code> tag.
+              </li>
+              <li>
+                Established → Insert into Supabase with
+                <code>high priority</code>, notify sales via Slack, and create
+                Gmail draft.
+              </li>
+              <li>
+                Fallback → Insert into Supabase with
+                <code>medium priority</code>.
+              </li>
+            </ul>
+          </ul>
+          <p>
+            <strong>Result:</strong> Lead processing is fully automated,
+            prioritized, and ensures the sales team acts on high-value leads
+            first.
+          </p>
+
+          <div class="flow-diagram">
+            <strong>Tools Used: </strong>
+            <div class="tool">Webhook (Lead Entry)</div>
+            <div class="tool">Zapier</div>
+            <div class="tool">Abstract API (Lead Enrichment)</div>
+            <div class="tool">Supabase</div>
+            <div class="tool">Slack</div>
+            <div class="tool">Gmail</div>
+          </div>
+          <a
+            href="assets/img/automation/zapier/lead enrichment.png"
+            class="glightbox"
+            data-title="Zapier Lead Enrichment Automation Flow"
+          >
+            <img
+              src="assets/img/automation/zapier/lead enrichment.png"
+              alt="Zapier Lead Enrichment Automation Flow"
+              class="project-img"
+            />
+          </a>
+        </div>
+
+        <div class="project-card">
+          <h3>Project & Client Communication Automation</h3>
+          <p>
+            <strong>Problem:</strong> Managing client projects in Asana required
+            manual setup and follow-ups, which often caused delays.
+          </p>
+          <p>
+            <strong>Solution:</strong> Built a Zapier-powered automation that:
+          </p>
+          <ul>
+            <li>
+              Creates Google Drive folders when new Asana projects are created.
+            </li>
+            <li>
+              Sends automatic emails via Twilio SendGrid when status changes.
+            </li>
+          </ul>
+          <p>
+            <strong>Result:</strong> Streamlined client communication and
+            reduced manual work.
+          </p>
+
+          <div class="flow-diagram">
+            <strong>Tools Used: </strong>
+            <div class="tool">Asana</div>
+
+            <div class="tool">Zapier</div>
+
+            <div class="tool">Google Drive</div>
+
+            <div class="tool">Twilio SendGrid</div>
+          </div>
+          <a
+            href="assets/img/automation/zapier/Client Communication Automation.png"
+            class="glightbox"
+            data-title="Zapier Client communication Automation Flow"
+          >
+            <img
+              src="assets/img/automation/zapier/Client Communication Automation.png"
+              alt="Zapier Automation Flow"
+              class="project-img"
+            />
+          </a>
+        </div>
+      </div>
+
+      <!-- Make Projects -->
+      <div class="tab-content active" id="make">
+        <div class="project-card">
+          <h3>Form Data Validation & Event Registration Automation</h3>
+
+          <p>
+            <strong>Problem:</strong> Manual verification of Tally form
+            submissions and event registrations in Google Sheets was
+            time-consuming and error-prone.
+          </p>
+
+          <p>
+            <strong>Solution:</strong> Built an automation in
+            <strong>Make</strong> that:
+          </p>
+          <ul>
+            <li>Triggers when a new submission is received from Tally.</li>
+            <li>
+              Reads the form details and checks if the user already exists in a
+              Google Sheet.
+            </li>
+            <li>
+              Stores the user ID and form ID in a variable for use across
+              multiple routes.
+            </li>
+            <li>
+              Calls a subscenario
+              <em
+                >(contains proprietary API calls and db integrations.So not able
+                to showcase what is inside it.)</em
+              >.
+            </li>
+            <li>
+              Looks up the event using the Tally form ID in the event sheet.
+            </li>
+            <li>
+              Routes the data through an ETL process to upsert user events and
+              registrations in Google Sheets.
+            </li>
+            <li>
+              <strong>If the user is new:</strong> Adds them to Mailchimp as a
+              subscriber.
+            </li>
+          </ul>
+
+          <p>
+            <strong>Result:</strong> Automated form validation, event
+            registration, data synchronization, and subscriber onboarding —
+            eliminating manual errors and improving efficiency.
+          </p>
+
+          <div class="flow-diagram">
+            <strong>Tools Used: </strong>
+            <div class="tool">Tally</div>
+            <div class="tool">Make</div>
+            <div class="tool">Google Sheets</div>
+            <div class="tool">Mail Chimp</div>
+          </div>
+
+          <img
+            src="assets/img/automation/make/tally-etl-automation.png"
+            alt="Make Automation Flow"
+            class="project-img"
+          />
+        </div>
+        <div class="project-card">
+          <h3>Email Attachment Processing & File Automation</h3>
+          <p>
+            <strong>Problem:</strong> Managing incoming email attachments
+            manually was time-consuming and error-prone, especially when
+            handling multiple file types.
+          </p>
+          <p>
+            <strong>Solution:</strong> Built a Make-powered automation that:
+          </p>
+          <ul>
+            <li>
+              Watches for incoming emails with attachments and filters for
+              <code>doc, xlsx, csv, pdf</code> files.
+            </li>
+            <li>
+              Uploads <code>doc</code> and <code>xlsx</code> files directly to
+              Google Drive.
+            </li>
+            <li>
+              Sends other file types to Gemini for content analysis, generating
+              descriptive filenames based on the file content.
+            </li>
+            <li>
+              Uploads Gemini-processed files to Google Drive with the new
+              descriptive filenames.
+            </li>
+            <li>
+              Implements error handling: if Gemini fails, automatically sends an
+              email alert to the administrator.
+            </li>
+          </ul>
+          <p>
+            <strong>Result:</strong> Streamlined file processing, reduced manual
+            work, and ensured proper naming and storage of all attachments.
+          </p>
+          <div class="flow-diagram">
+            <strong>Tools Used: </strong>
+            <div class="tool">Gmail</div>
+
+            <div class="tool">Make</div>
+
+            <!-- Direct upload path -->
+
+            <div class="tool">GDrive</div>
+
+            <!-- Gemini processing path -->
+
+            <div class="tool">Gemini AI</div>
+          </div>
+
+          <a
+            href="assets/img/automation/make/email_file_automation.png"
+            class="glightbox"
+            data-title="Make Automation Flow for Email Attachments"
+          >
+            <img
+              src="assets/img/automation/make/email_file_automation.png"
+              alt="Make Automation Flow for Email Attachments"
+              class="project-img"
+            />
+          </a>
+        </div>
+
+        <div class="project-card">
+          <h3>Automated Financial Report Generation</h3>
+          <p>
+            <strong>Problem:</strong> Finance team needed reports from Xero when
+            tasks were completed in Asana.
+          </p>
+          <p><strong>Solution:</strong> Built in <strong>Make</strong> that:</p>
+          <ul>
+            <li>Triggers on completed Asana tasks.</li>
+            <li>Fetches Journal Entries from Xero API.</li>
+            <li>Generates CSV report and attaches to Asana task.</li>
+          </ul>
+          <p>
+            <strong>Result:</strong> Removed manual reporting, improved
+            accuracy.
+          </p>
+
+          <div class="flow-diagram">
+            <strong>Tools Used: </strong>
+            <div class="tool">Asana</div>
+
+            <div class="tool">Make</div>
+
+            <div class="tool">Xero API</div>
+
+            <div class="tool">CSV Report</div>
+          </div>
+
+          <a
+            href="assets/img/automation/make/Xero Accounting Report Automation.png"
+            class="glightbox"
+            data-title="Make Automation Flow for Xero Report"
+          >
+            <img
+              src="assets/img/automation/make/Xero Accounting Report Automation.png"
+              alt="Make Automation Flow"
+              class="project-img"
+          /></a>
+        </div>
+      </div>
+
+      <!-- n8n Projects -->
+      <div class="tab-content" id="n8n">
+        <div class="project-card">
+          <h3>Chat-Based Appointment Scheduling System</h3>
+          <p>
+            <strong>Problem:</strong> Manual scheduling caused double-booking
+            and confusion.
+          </p>
+          <p>
+            <strong>Solution:</strong> Built in <strong>n8n</strong> with
+            workflows for:
+          </p>
+          <ul>
+            <li>
+              <strong>Create</strong>: Collect details, validate slots, create
+              appointment.
+            </li>
+            <li><strong>Cancel</strong>: Lookup, confirm, cancel via chat.</li>
+            <li>
+              <strong>Update</strong>: Fetch existing, modify details, prevent
+              conflicts.
+            </li>
+          </ul>
+          <p>
+            <strong>Result:</strong> Automated chat-based scheduling reduced
+            human effort by 90%.
+          </p>
+
+          <div class="flow-diagram">
+            <strong>Tools Used: </strong>
+            <div class="tool">Chat Trigger</div>
+
+            <div class="tool">n8n</div>
+
+            <div class="tool">Schedule Tools</div>
+
+            <div class="tool">Google Calendar</div>
+          </div>
+          <a
+            href="assets/img/automation/n8n/appointment.png"
+            class="glightbox"
+            data-title="n8n Automation Flow for Appointment Scheduling"
+          >
+            <img
+              src="assets/img/automation/n8n/appointment.png"
+              alt="n8n Automation Flow"
+              class="project-img"
+            />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .automation-project {
+        max-width: 900px;
+        margin: 60px auto;
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
+
+      .automation-project h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2rem;
+        color: #111;
+      }
+
+      /* Tabs */
+      .tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .tab {
+        padding: 10px 18px;
+        border: 2px solid #0073e6;
+        border-radius: 6px;
+        background: #fff;
+        color: #0073e6;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .tab.active {
+        background: #0073e6;
+        color: #fff;
+      }
+
+      /* Tab Content */
+      .tab-content {
+        display: none;
+        animation: fadeIn 0.4s ease-in-out;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .project-card {
+        background: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      }
+
+      .project-card h3 {
+        margin-bottom: 15px;
+        color: #0073e6;
+      }
+
+      .project-card p {
+        margin: 8px 0;
+        line-height: 1.6;
+      }
+
+      .flow-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+
+      .tool {
+        background: #f4f4f4;
+        padding: 12px 18px;
+        border-radius: 6px;
+        font-weight: bold;
+        margin: 5px;
+      }
+
+      .arrow {
+        font-size: 1.5rem;
+        margin: 0 10px;
+        color: #666;
+      }
+
+      .project-img {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin-top: 15px;
+      }
+    </style>
+
+    <script>
+      // Tab switching
+      const tabs = document.querySelectorAll(".tab");
+      const contents = document.querySelectorAll(".tab-content");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((t) => t.classList.remove("active"));
+          contents.forEach((c) => c.classList.remove("active"));
+          tab.classList.add("active");
+          document.getElementById(tab.dataset.tab).classList.add("active");
+        });
+      });
+    </script>
+    <script>
+      const lightbox = GLightbox({
+        selector: ".glightbox", // targets all links with this class
+        touchNavigation: true,
+        loop: true,
+        zoomable: true,
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,233 @@
+/* =================
+   CSS for port.css
+   ================= */
+
+/* Counter Card Component Styles */
+.counter-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 32px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-top: 4px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(135deg, #007bff, #39ff14, #007bff) border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 320px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.counter-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(0, 123, 255, 0.2);
+}
+
+.counter-card-header {
+  margin-bottom: clamp(16px, 3vw, 24px);
+}
+
+.counter-card-title {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: clamp(6px, 1.5vw, 8px);
+  line-height: 1.3;
+}
+
+.counter-card-description {
+  color: #666666;
+  font-size: clamp(0.875rem, 2vw, 0.95rem);
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+.project-counter {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-background {
+  fill: none;
+  stroke: #e9ecef;
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+
+.progress-bar {
+  fill: none;
+  stroke: url(#gradient);
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 508.94;
+  stroke-dashoffset: 508.94;
+  transition: stroke-dashoffset 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 3px 12px rgba(0, 123, 255, 0.15));
+}
+
+.center-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: auto;
+}
+
+.project-number {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #007bff, #39ff14);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  display: block;
+  margin: 0;
+  padding: 0;
+  animation: countUp 2.5s ease-out;
+}
+
+@keyframes countUp {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.project-label {
+  color: #666666;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-top: 8px;
+  line-height: 1;
+}
+
+.counter-card-footer {
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+  margin-top: 24px;
+}
+
+.counter-card-stats {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #888;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Work section container for cards */
+.work__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Tablet View (768px - 1024px) */
+@media (max-width: 1024px) {
+  .work__container {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+    gap: 24px;
+    padding: 2rem 1.5rem;
+  }
+
+  .counter-card {
+    max-width: 400px;
+    padding: 2.5rem;
+  }
+
+  .project-counter {
+    width: 240px;
+    height: 240px;
+  }
+
+  .counter-card-title {
+    font-size: 1.75rem;
+  }
+
+  .counter-card-description {
+    font-size: 1.1rem;
+  }
+
+  .project-number {
+    font-size: 3.5rem;
+  }
+}
+
+/* Mobile View (481px - 767px) */
+@media (max-width: 767px) {
+  .work__container {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    padding: 1.5rem;
+    gap: 2rem;
+  }
+
+  .counter-card {
+    max-width: 500px;
+    padding: 2rem;
+  }
+
+  .project-counter {
+    width: 260px;
+    height: 260px;
+  }
+
+  .counter-card-header {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Small Mobile View (480px and below) */
+@media (max-width: 480px) {
+  .work__container {
+    padding: 1rem;
+  }
+
+  .counter-card {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+
+  .project-counter {
+    width: 200px;
+    height: 200px;
+  }
+
+  .counter-card-title {
+    font-size: 1.6rem;
+  }
+
+  .project-number {
+    font-size: 3rem;
+  }
+}
