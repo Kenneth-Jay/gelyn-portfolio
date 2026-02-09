@@ -257,3 +257,21 @@
   color: #007bff !important;
   opacity: 1 !important;
 }
+
+.project__card {
+  background: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  opacity: 1 !important; /* Force full opacity */
+  transform: translateZ(0) scale(1); /* GPU acceleration */
+  display: block;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.project__image img {
+  transform: translateZ(0); /* GPU acceleration for images */
+  backface-visibility: hidden;
+}
